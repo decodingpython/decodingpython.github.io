@@ -1,0 +1,25 @@
+# creating nxnxn matrix in python 3
+# importing the numpy library
+import numpy as np
+
+# calculating the value of nxnxn
+n = 5
+a = np.arange(n)
+b = np.array([a]*n)
+matrix = np.array([b]*n)
+
+# creating an array containg n-dimensional points
+flat_mat = matrix.reshape((int(matrix.size/n),n))
+
+# creating a random matrix to be used as a rotation
+rotate = np.eye(n) + 2
+
+# applying the rotation on each n-dimensional point
+result = np.array([rotate.dot(x) for x in flat_mat])
+
+# return to original shape
+result = result.reshape((n,n,n))
+
+# printing the resultant matrix and it's shape
+print(result)
+print(matrix.shape)
